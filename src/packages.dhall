@@ -13,4 +13,9 @@
   , repo = "https://github.com/Unisay/purescript-lua-console.git"
   , version = "v6.0.0"
   }
+, lua-unsafe-coerce =
+  { dependencies = [ ] : List Text
+  , repo = "https://github.com/Unisay/purescript-lua-unsafe-coerce.git"
+  , version = "v6.0.0"
+  }
 }
