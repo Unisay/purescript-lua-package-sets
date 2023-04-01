@@ -18,11 +18,6 @@
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
   , version = "v0.1.0"
   }
-, newtype =
-  { dependencies = [ "prelude", "safe-coerce" ]
-  , repo = "https://github.com/Unisay/purescript-lua-newtype.git"
-  , version = "v5.0.0"
-  }
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
