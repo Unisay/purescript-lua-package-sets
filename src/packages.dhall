@@ -3,6 +3,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-console.git"
   , version = "v6.0.0"
   }
+, lua-control =
+  { dependencies = [ "lua-newtype", "lua-prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-control.git"
+  , version = "v6.0.0"
+  }
 , lua-effect =
   { dependencies = [ "lua-prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
