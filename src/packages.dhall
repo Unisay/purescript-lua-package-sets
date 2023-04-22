@@ -33,4 +33,21 @@
   , repo = "https://github.com/Unisay/purescript-lua-unsafe-coerce.git"
   , version = "v6.0.0"
   }
+, foldable-traversable =
+  { dependencies =
+    [ "bifunctors"
+    , "const"
+    , "control"
+    , "either"
+    , "functors"
+    , "identity"
+    , "maybe"
+    , "newtype"
+    , "orders"
+    , "prelude"
+    , "tuples"
+    ]
+  , repo = "https://github.com/Unisay/purescript-lua-foldable-traversable.git"
+  , version = "v6.0.0"
+  }
 }
