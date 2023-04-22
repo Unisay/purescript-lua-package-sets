@@ -18,6 +18,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
   , version = "v0.1.0"
   }
+, partial =
+  { dependencies = [] : List Text
+  , repo = "https://github.com/Unisay/purescript-lua-partial.git"
+  , version = "v4.0.0"
+  }
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
