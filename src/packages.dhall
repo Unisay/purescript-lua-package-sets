@@ -33,6 +33,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-safe-coerce.git"
   , version = "v2.0.0"
   }
+, st =
+  { dependencies = [ "partial", "prelude", "tailrec", "unsafe-coerce" ]
+  , repo = "https://github.com/purescript-lua/purescript-lua-st.git"
+  , version = "v6.2.0"
+  }
 , unfoldable =
   { dependencies =
     [ "foldable-traversable", "maybe", "partial", "prelude", "tuples" ]
