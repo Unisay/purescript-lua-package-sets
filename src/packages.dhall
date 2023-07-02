@@ -28,6 +28,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
   , version = "v6.0.3"
   }
+, refs =
+  { dependencies = [ "effect", "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-refs.git"
+  , version = "v6.0.1"
+  }
 , safe-coerce =
   { dependencies = [ "unsafe-coerce" ]
   , repo = "https://github.com/Unisay/purescript-lua-safe-coerce.git"
