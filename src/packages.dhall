@@ -26,7 +26,7 @@
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
-  , version = "v6.0.2"
+  , version = "v6.0.3"
   }
 , safe-coerce =
   { dependencies = [ "unsafe-coerce" ]
