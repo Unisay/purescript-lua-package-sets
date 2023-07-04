@@ -1,4 +1,18 @@
-{ console =
+{ arrays =
+  { dependencies =
+    [ "foldable-traversable"
+    , "functions"
+    , "nonempty"
+    , "partial"
+    , "prelude"
+    , "st"
+    , "unfoldable"
+    , "unsafe-coerce"
+    ]
+  , repo = "https://github.com/Unisay/purescript-lua-arrays.git"
+  , version = "v7.2.1"
+  }
+, console =
   { dependencies = [ "effect", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-console.git"
   , version = "v6.0.0"
