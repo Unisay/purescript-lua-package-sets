@@ -13,6 +13,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
   , version = "v4.0.0"
   }
+, functions =
+  { dependencies = [ "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-functions.git"
+  , version = "v6.0.1"
+  }
 , lua-ngx =
   { dependencies = [ "effect", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
@@ -26,7 +31,7 @@
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
-  , version = "v6.0.3"
+  , version = "v6.0.2"
   }
 , refs =
   { dependencies = [ "effect", "prelude" ]
