@@ -27,6 +27,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
   , version = "v4.0.0"
   }
+, exceptions =
+  { dependencies = [ "effect", "either", "maybe", "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-exceptions.git"
+  , version = "v6.0.0"
+  }
 , functions =
   { dependencies = [ "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-functions.git"
