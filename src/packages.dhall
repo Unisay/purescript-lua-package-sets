@@ -1,4 +1,9 @@
-{ arrays =
+{ `assert` =
+  { dependencies = [ "effect", "console", "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-assert.git"
+  , version = "v6.0.0"
+  }
+, arrays =
   { dependencies =
     [ "foldable-traversable"
     , "functions"
