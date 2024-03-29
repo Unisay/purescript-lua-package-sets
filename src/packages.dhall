@@ -50,7 +50,7 @@
 , partial =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-partial.git"
-  , version = "v4.0.0"
+  , version = "v4.1.0"
   }
 , prelude =
   { dependencies = [] : List Text
