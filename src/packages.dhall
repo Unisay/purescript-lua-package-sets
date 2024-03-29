@@ -81,7 +81,7 @@
 , unsafe-coerce =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-unsafe-coerce.git"
-  , version = "v6.0.0"
+  , version = "v6.1.0"
   }
 , foldable-traversable =
   { dependencies =
