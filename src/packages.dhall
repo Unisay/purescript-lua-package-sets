@@ -20,7 +20,7 @@
 , console =
   { dependencies = [ "effect", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-console.git"
-  , version = "v6.0.0"
+  , version = "v6.1.0"
   }
 , control =
   { dependencies = [ "newtype", "prelude" ]
