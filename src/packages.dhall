@@ -40,7 +40,7 @@
 , functions =
   { dependencies = [ "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-functions.git"
-  , version = "v6.0.1"
+  , version = "v6.1.0"
   }
 , lua-ngx =
   { dependencies = [ "effect", "prelude" ]
