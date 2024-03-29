@@ -30,7 +30,7 @@
 , effect =
   { dependencies = [ "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
-  , version = "v4.0.0"
+  , version = "v4.1.0"
   }
 , exceptions =
   { dependencies = [ "effect", "either", "maybe", "prelude" ]
@@ -55,7 +55,7 @@
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
-  , version = "v7.0.0"
+  , version = "v7.1.0"
   }
 , refs =
   { dependencies = [ "effect", "prelude" ]
