@@ -70,7 +70,7 @@
 , st =
   { dependencies = [ "partial", "prelude", "tailrec", "unsafe-coerce" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-st.git"
-  , version = "v6.2.0"
+  , version = "v6.3.0"
   }
 , unfoldable =
   { dependencies =
