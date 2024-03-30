@@ -15,7 +15,7 @@
     , "unsafe-coerce"
     ]
   , repo = "https://github.com/Unisay/purescript-lua-arrays.git"
-  , version = "v7.2.1"
+  , version = "v7.3.0"
   }
 , console =
   { dependencies = [ "effect", "prelude" ]
