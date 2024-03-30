@@ -32,6 +32,22 @@
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
   , version = "v4.1.0"
   }
+, enums =
+  { dependencies =
+    [ "control"
+    , "either"
+    , "gen"
+    , "maybe"
+    , "newtype"
+    , "nonempty"
+    , "partial"
+    , "prelude"
+    , "tuples"
+    , "unfoldable"
+    ]
+  , repo = "https://github.com/Unisay/purescript-lua-enums.git"
+  , version = "v6.1.0"
+  }
 , exceptions =
   { dependencies = [ "effect", "either", "maybe", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-exceptions.git"
