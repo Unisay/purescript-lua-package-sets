@@ -55,7 +55,7 @@
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
-  , version = "v7.1.0"
+  , version = "v7.1.1"
   }
 , refs =
   { dependencies = [ "effect", "prelude" ]
@@ -76,7 +76,7 @@
   { dependencies =
     [ "foldable-traversable", "maybe", "partial", "prelude", "tuples" ]
   , repo = "https://github.com/Unisay/purescript-lua-unfoldable.git"
-  , version = "v6.0.0"
+  , version = "v6.1.0"
   }
 , unsafe-coerce =
   { dependencies = [] : List Text
