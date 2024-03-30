@@ -98,6 +98,6 @@
     , "tuples"
     ]
   , repo = "https://github.com/Unisay/purescript-lua-foldable-traversable.git"
-  , version = "v6.0.0"
+  , version = "v6.1.0"
   }
 }
