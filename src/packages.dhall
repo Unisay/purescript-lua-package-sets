@@ -63,6 +63,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
   , version = "v0.1.0"
   }
+, integers =
+  { dependencies = [ "maybe", "numbers", "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-integers.git"
+  , version = "v6.1.0"
+  }
 , numbers =
   { dependencies = [ "functions", "maybe", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-numbers.git"
