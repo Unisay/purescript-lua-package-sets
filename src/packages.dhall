@@ -63,6 +63,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
   , version = "v0.1.0"
   }
+, numbers =
+  { dependencies = [ "functions", "maybe", "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-numbers.git"
+  , version = "v9.1.0"
+  }
 , partial =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-partial.git"
