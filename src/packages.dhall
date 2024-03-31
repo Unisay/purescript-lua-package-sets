@@ -98,6 +98,26 @@
   , repo = "https://github.com/purescript-lua/purescript-lua-st.git"
   , version = "v6.3.0"
   }
+, strings =
+  { dependencies =
+    [ "arrays"
+    , "enums"
+    , "foldable-traversable"
+    , "gen"
+    , "integers"
+    , "maybe"
+    , "newtype"
+    , "nonempty"
+    , "partial"
+    , "prelude"
+    , "tailrec"
+    , "tuples"
+    , "unfoldable"
+    , "unsafe-coerce"
+    ]
+  , repo = "https://github.com/Unisay/purescript-lua-strings.git"
+  , version = "v6.1.0"
+  }
 , unfoldable =
   { dependencies =
     [ "foldable-traversable", "maybe", "partial", "prelude", "tuples" ]
