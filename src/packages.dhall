@@ -61,7 +61,7 @@
 , lua-ngx =
   { dependencies = [ "effect", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
-  , version = "v0.1.0"
+  , version = "v0.2.0"
   }
 , integers =
   { dependencies = [ "maybe", "numbers", "prelude" ]
