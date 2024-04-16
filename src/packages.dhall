@@ -58,6 +58,11 @@
   , repo = "https://github.com/Unisay/purescript-lua-functions.git"
   , version = "v6.1.0"
   }
+, lazy =
+  { dependencies = [ "control", "foldable-traversable", "invariant", "prelude" ]
+  , repo = "https://github.com/Unisay/purescript-lua-lazy.git"
+  , version = "v7.0.0"
+  }
 , lua-ngx =
   { dependencies = [ "effect", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
