@@ -91,7 +91,7 @@
 , refs =
   { dependencies = [ "effect", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-refs.git"
-  , version = "v6.0.1"
+  , version = "v6.1.0"
   }
 , safe-coerce =
   { dependencies = [ "unsafe-coerce" ]
