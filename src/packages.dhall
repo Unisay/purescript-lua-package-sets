@@ -121,7 +121,7 @@
     , "unsafe-coerce"
     ]
   , repo = "https://github.com/Unisay/purescript-lua-strings.git"
-  , version = "v6.1.0"
+  , version = "v6.2.0"
   }
 , unfoldable =
   { dependencies =
