@@ -1,7 +1,7 @@
 { `assert` =
   { dependencies = [ "effect", "console", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-assert.git"
-  , version = "v6.1.0"
+  , version = "v6.1.1"
   }
 , arrays =
   { dependencies =
@@ -30,7 +30,7 @@
 , effect =
   { dependencies = [ "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
-  , version = "v4.1.1"
+  , version = "v4.1.2"
   }
 , enums =
   { dependencies =
