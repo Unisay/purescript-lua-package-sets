@@ -25,7 +25,7 @@
 , control =
   { dependencies = [ "newtype", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-control.git"
-  , version = "v6.0.0"
+  , version = "v6.0.1"
   }
 , effect =
   { dependencies = [ "prelude" ]
@@ -149,6 +149,6 @@
     , "tuples"
     ]
   , repo = "https://github.com/Unisay/purescript-lua-foldable-traversable.git"
-  , version = "v6.1.0"
+  , version = "v6.1.1"
   }
 }
