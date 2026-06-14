@@ -86,7 +86,7 @@
 , prelude =
   { dependencies = [] : List Text
   , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
-  , version = "v7.2.1"
+  , version = "v7.2.2"
   }
 , refs =
   { dependencies = [ "effect", "prelude" ]
