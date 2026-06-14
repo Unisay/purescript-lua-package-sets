@@ -30,7 +30,7 @@
 , effect =
   { dependencies = [ "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-effect.git"
-  , version = "v4.1.0"
+  , version = "v4.1.1"
   }
 , enums =
   { dependencies =
@@ -71,12 +71,12 @@
 , integers =
   { dependencies = [ "maybe", "numbers", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-integers.git"
-  , version = "v6.1.0"
+  , version = "v6.1.1"
   }
 , numbers =
   { dependencies = [ "functions", "maybe", "prelude" ]
   , repo = "https://github.com/Unisay/purescript-lua-numbers.git"
-  , version = "v9.1.0"
+  , version = "v9.1.1"
   }
 , partial =
   { dependencies = [] : List Text
