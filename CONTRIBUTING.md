@@ -1,7 +1,7 @@
 # Contributing to the purescript-lua package set
 
 This set is a collection of PureScript libraries forked to run on Lua 5.1 through
-the [pslua](https://github.com/Unisay/purescript-lua) compiler. Each fork keeps
+the [pslua](https://github.com/purescript-lua/purescript-lua) compiler. Each fork keeps
 the upstream PureScript sources and replaces the JavaScript FFI with Lua. This
 document is the practical canon for maintaining a fork; the reasoning behind each
 rule lives in [`docs/adr/`](docs/adr/).
@@ -56,5 +56,5 @@ Cross-cutting decisions are recorded as ADRs in [`docs/adr/`](docs/adr/).
   ADR index. Supersede rather than rewrite an accepted record.
 
 Decisions about the pslua compiler itself live in the
-[pslua repository](https://github.com/Unisay/purescript-lua) under its own
+[pslua repository](https://github.com/purescript-lua/purescript-lua) under its own
 `docs/adr/`.

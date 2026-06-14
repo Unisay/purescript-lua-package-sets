@@ -16,7 +16,7 @@ Every fork pins its toolchain through purescript-overlay: purs 0.15.16
 (`purs-bin.purs-0_15_16`), spago 0.21.0 (`spago-bin.spago-0_21_0`), and a Lua 5.1
 toolchain (`lua51Packages`). The dev shell also carries dhall, luacheck,
 luaformatter, nixfmt, and treefmt. The pslua compiler is a flake input tracking
-`github:Unisay/purescript-lua`.
+`github:purescript-lua/purescript-lua`.
 
 ## Consequences
 

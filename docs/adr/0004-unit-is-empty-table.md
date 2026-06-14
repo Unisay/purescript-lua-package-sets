@@ -11,7 +11,7 @@ check silently returns 0.
 ## Decision
 
 `unit` is `{}` (an empty table), never nil. This requires
-`Unisay/purescript-lua-prelude` v7.2.0 or newer.
+`purescript-lua/purescript-lua-prelude` v7.2.0 or newer.
 
 ## Consequences
 
