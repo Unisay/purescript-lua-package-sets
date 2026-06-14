@@ -1,6 +1,6 @@
 { `assert` =
   { dependencies = [ "effect", "console", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-assert.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-assert.git"
   , version = "v6.1.1"
   }
 , arrays =
@@ -14,22 +14,22 @@
     , "unfoldable"
     , "unsafe-coerce"
     ]
-  , repo = "https://github.com/Unisay/purescript-lua-arrays.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-arrays.git"
   , version = "v7.3.0"
   }
 , console =
   { dependencies = [ "effect", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-console.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-console.git"
   , version = "v6.1.0"
   }
 , control =
   { dependencies = [ "newtype", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-control.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-control.git"
   , version = "v6.0.1"
   }
 , effect =
   { dependencies = [ "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-effect.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-effect.git"
   , version = "v4.1.2"
   }
 , enums =
@@ -45,57 +45,57 @@
     , "tuples"
     , "unfoldable"
     ]
-  , repo = "https://github.com/Unisay/purescript-lua-enums.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-enums.git"
   , version = "v6.1.0"
   }
 , exceptions =
   { dependencies = [ "effect", "either", "maybe", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-exceptions.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-exceptions.git"
   , version = "v6.1.0"
   }
 , functions =
   { dependencies = [ "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-functions.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-functions.git"
   , version = "v6.1.0"
   }
 , lazy =
   { dependencies = [ "control", "foldable-traversable", "invariant", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-lazy.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-lazy.git"
   , version = "v7.0.0"
   }
 , lua-ngx =
   { dependencies = [ "effect", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-ngx.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-ngx.git"
   , version = "v0.2.0"
   }
 , integers =
   { dependencies = [ "maybe", "numbers", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-integers.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-integers.git"
   , version = "v6.1.1"
   }
 , numbers =
   { dependencies = [ "functions", "maybe", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-numbers.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-numbers.git"
   , version = "v9.1.1"
   }
 , partial =
   { dependencies = [] : List Text
-  , repo = "https://github.com/Unisay/purescript-lua-partial.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-partial.git"
   , version = "v4.1.0"
   }
 , prelude =
   { dependencies = [] : List Text
-  , repo = "https://github.com/Unisay/purescript-lua-prelude.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-prelude.git"
   , version = "v7.2.2"
   }
 , refs =
   { dependencies = [ "effect", "prelude" ]
-  , repo = "https://github.com/Unisay/purescript-lua-refs.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-refs.git"
   , version = "v6.1.0"
   }
 , safe-coerce =
   { dependencies = [ "unsafe-coerce" ]
-  , repo = "https://github.com/Unisay/purescript-lua-safe-coerce.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-safe-coerce.git"
   , version = "v2.0.0"
   }
 , st =
@@ -120,18 +120,18 @@
     , "unfoldable"
     , "unsafe-coerce"
     ]
-  , repo = "https://github.com/Unisay/purescript-lua-strings.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-strings.git"
   , version = "v6.2.0"
   }
 , unfoldable =
   { dependencies =
     [ "foldable-traversable", "maybe", "partial", "prelude", "tuples" ]
-  , repo = "https://github.com/Unisay/purescript-lua-unfoldable.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-unfoldable.git"
   , version = "v6.1.0"
   }
 , unsafe-coerce =
   { dependencies = [] : List Text
-  , repo = "https://github.com/Unisay/purescript-lua-unsafe-coerce.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-unsafe-coerce.git"
   , version = "v6.1.0"
   }
 , foldable-traversable =
@@ -148,7 +148,7 @@
     , "prelude"
     , "tuples"
     ]
-  , repo = "https://github.com/Unisay/purescript-lua-foldable-traversable.git"
+  , repo = "https://github.com/purescript-lua/purescript-lua-foldable-traversable.git"
   , version = "v6.1.1"
   }
 }

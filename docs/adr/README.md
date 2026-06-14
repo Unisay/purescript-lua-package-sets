@@ -6,7 +6,7 @@ decision, and its consequences.
 
 Scope: these ADRs cover the set as a whole, its forks, their toolchain, CI, FFI
 conventions, release process, and formatting. Decisions about the pslua compiler
-itself live in its own repository (`Unisay/purescript-lua`, under `docs/adr/`).
+itself live in its own repository (`purescript-lua/purescript-lua`, under `docs/adr/`).
 The rule of thumb: a decision about the compiler goes there; a decision about
 the forks, the set, or the shared tooling goes here.
 
