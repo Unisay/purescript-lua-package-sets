@@ -51,7 +51,7 @@
 , exceptions =
   { dependencies = [ "effect", "either", "maybe", "prelude" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-exceptions.git"
-  , version = "v6.1.0"
+  , version = "v6.1.1"
   }
 , functions =
   { dependencies = [ "prelude" ]
