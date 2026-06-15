@@ -71,7 +71,7 @@
 , integers =
   { dependencies = [ "maybe", "numbers", "prelude" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-integers.git"
-  , version = "v6.1.1"
+  , version = "v6.1.2"
   }
 , numbers =
   { dependencies = [ "functions", "maybe", "prelude" ]
