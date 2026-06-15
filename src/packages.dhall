@@ -96,7 +96,7 @@
 , safe-coerce =
   { dependencies = [ "unsafe-coerce" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-safe-coerce.git"
-  , version = "v2.0.0"
+  , version = "v2.0.1"
   }
 , st =
   { dependencies = [ "effect", "partial", "prelude", "tailrec", "unsafe-coerce" ]
