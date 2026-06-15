@@ -1,0 +1,60 @@
+name: Test set
+
+# Aggregation test-suite: for every package in the set, check it out at the
+# version pinned in src/packages.dhall and delegate to that package's own
+# build + tests. Writes no tests of its own — it just runs each package's
+# `scripts/build` (compile via pslua) and `scripts/test` (if the package ships
+# one). A red job means the set pins a package version that doesn't build or
+# whose own tests fail.
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.gen.outputs.packages }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v27
+      - name: Build matrix from packages.dhall
+        id: gen
+        run: |
+          packages=$(nix shell nixpkgs#dhall-json nixpkgs#jq -c bash -c 'dhall-to-json --file ./src/packages.dhall | jq -c "[to_entries[] | {name:.key, slug:(.value.repo|ltrimstr(\"https://github.com/\")|rtrimstr(\".git\")), version:.value.version}]"')
+          echo "packages=$packages" >> "$GITHUB_OUTPUT"
+
+  test:
+    needs: matrix
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJSON(needs.matrix.outputs.packages) }}
+    name: ${{ matrix.package.name }} @ ${{ matrix.package.version }}
+    steps:
+      - name: Check out ${{ matrix.package.slug }} at ${{ matrix.package.version }}
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.package.slug }}
+          ref: ${{ matrix.package.version }}
+
+      - uses: cachix/install-nix-action@v27
+        with:
+          extra_nix_config: |
+            extra-substituters = https://cache.iog.io https://purescript-lua.cachix.org
+            extra-trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= purescript-lua.cachix.org-1:yLs4ei2HtnuPtzLekOrW3xdfm95+Etw15gwgyIGTayA=
+
+      - uses: cachix/cachix-action@v14
+        with:
+          name: purescript-lua
+
+      - name: Build (delegates to the package's scripts/build)
+        run: nix develop --accept-flake-config -c ./scripts/build
+
+      - name: Test (delegates to the package's own tests, if any)
+        run: if [ -f scripts/test ]; then nix develop --accept-flake-config -c bash ./scripts/test; fi
