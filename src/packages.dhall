@@ -15,7 +15,7 @@
     , "unsafe-coerce"
     ]
   , repo = "https://github.com/purescript-lua/purescript-lua-arrays.git"
-  , version = "v7.3.0"
+  , version = "v7.4.0"
   }
 , console =
   { dependencies = [ "effect", "prelude" ]
@@ -99,9 +99,9 @@
   , version = "v2.0.0"
   }
 , st =
-  { dependencies = [ "partial", "prelude", "tailrec", "unsafe-coerce" ]
+  { dependencies = [ "effect", "partial", "prelude", "tailrec", "unsafe-coerce" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-st.git"
-  , version = "v6.3.0"
+  , version = "v6.4.0"
   }
 , strings =
   { dependencies =
