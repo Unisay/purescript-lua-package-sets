@@ -48,3 +48,15 @@ jobs:
         run: |
           nix develop github:purescript-lua/purescript-lua --accept-flake-config \
             -c bash -c 'cd test && spago build -u "-g corefn"'
+
+  # The README package table is generated from src/packages.dhall; guard against
+  # hand-edits / forgotten regeneration so it cannot drift out of sync again.
+  readme-table:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v27
+      - name: README package table is in sync with src/packages.dhall
+        run: ./scripts/gen-readme-table.sh --check

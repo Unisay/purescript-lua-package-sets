@@ -41,8 +41,13 @@ imports it with `@AGENTS.md`. Edit `AGENTS.md`; never duplicate.
 ## Releasing ([ADR 0006](docs/adr/0006-fork-release-by-annotated-tag.md))
 
 Annotated git tag on `master` → bump the fork's version in `src/packages.dhall` →
+regenerate the README package table (`scripts/gen-readme-table.sh`) →
 refresh `latest-compatible-sets.json` → push a `psc-*` set tag. A tooling-only PR
 needs no release.
+
+The README package table is generated from `src/packages.dhall` (the single
+source of truth) — run `scripts/gen-readme-table.sh` after any version bump and
+commit the result. CI (`scripts/gen-readme-table.sh --check`) fails if it drifts.
 
 ## Decisions and ADRs
 
