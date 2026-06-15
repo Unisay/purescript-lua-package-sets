@@ -31,12 +31,21 @@ jobs:
   test:
     needs: matrix
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
         package: ${{ fromJSON(needs.matrix.outputs.packages) }}
     name: ${{ matrix.package.name }} @ ${{ matrix.package.version }}
     steps:
+      # Reclaim runner disk for the Nix store: GHC/purs closures exhaust the
+      # default ~14 GB free space. Pinned to the v10 SHA — `@main` is a mutable
+      # ref; this action is composite bash (auditable) and this job carries no
+      # push secrets (cachix is pull-only, GITHUB_TOKEN is read-only above).
+      - name: Free up disk space
+        uses: wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7
+
       - name: Check out ${{ matrix.package.slug }} at ${{ matrix.package.version }}
         uses: actions/checkout@v4
         with:
