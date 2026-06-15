@@ -30,7 +30,7 @@
 , effect =
   { dependencies = [ "prelude" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-effect.git"
-  , version = "v4.1.2"
+  , version = "v4.1.3"
   }
 , enums =
   { dependencies =
