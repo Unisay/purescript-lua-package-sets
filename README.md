@@ -49,7 +49,7 @@ FFI in place of the JavaScript one. The package name is the Dhall key in
 | console | https://github.com/purescript-lua/purescript-lua-console | v6.1.1 |
 | control | https://github.com/purescript-lua/purescript-lua-control | v6.0.1 |
 | effect | https://github.com/purescript-lua/purescript-lua-effect | v4.1.3 |
-| enums | https://github.com/purescript-lua/purescript-lua-enums | v6.1.1 |
+| enums | https://github.com/purescript-lua/purescript-lua-enums | v6.1.2 |
 | exceptions | https://github.com/purescript-lua/purescript-lua-exceptions | v6.1.1 |
 | foldable-traversable | https://github.com/purescript-lua/purescript-lua-foldable-traversable | v6.1.1 |
 | functions | https://github.com/purescript-lua/purescript-lua-functions | v6.1.0 |
