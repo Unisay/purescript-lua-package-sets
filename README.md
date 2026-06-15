@@ -21,7 +21,7 @@ let upstream-ps =
       https://github.com/purescript/package-sets/releases/download/psc-0.15.15-20240309/packages.dhall
 
 let upstream-lua =
-      https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260614-4/packages.dhall
+      https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260615/packages.dhall
 
 in  upstream-ps // upstream-lua
 ```
@@ -43,24 +43,24 @@ FFI in place of the JavaScript one. The package name is the Dhall key in
 
 | Package | Repository | Version |
 |---|---|---|
-| arrays | https://github.com/purescript-lua/purescript-lua-arrays | v7.3.0 |
+| arrays | https://github.com/purescript-lua/purescript-lua-arrays | v7.4.1 |
 | assert | https://github.com/purescript-lua/purescript-lua-assert | v6.1.1 |
-| console | https://github.com/purescript-lua/purescript-lua-console | v6.1.0 |
+| console | https://github.com/purescript-lua/purescript-lua-console | v6.1.1 |
 | control | https://github.com/purescript-lua/purescript-lua-control | v6.0.1 |
-| effect | https://github.com/purescript-lua/purescript-lua-effect | v4.1.2 |
-| enums | https://github.com/purescript-lua/purescript-lua-enums | v6.1.0 |
-| exceptions | https://github.com/purescript-lua/purescript-lua-exceptions | v6.1.0 |
+| effect | https://github.com/purescript-lua/purescript-lua-effect | v4.1.3 |
+| enums | https://github.com/purescript-lua/purescript-lua-enums | v6.1.1 |
+| exceptions | https://github.com/purescript-lua/purescript-lua-exceptions | v6.1.1 |
 | foldable-traversable | https://github.com/purescript-lua/purescript-lua-foldable-traversable | v6.1.1 |
 | functions | https://github.com/purescript-lua/purescript-lua-functions | v6.1.0 |
-| integers | https://github.com/purescript-lua/purescript-lua-integers | v6.1.1 |
+| integers | https://github.com/purescript-lua/purescript-lua-integers | v6.1.2 |
 | lazy | https://github.com/purescript-lua/purescript-lua-lazy | v7.0.0 |
 | lua-ngx | https://github.com/purescript-lua/purescript-lua-ngx | v0.2.0 |
-| numbers | https://github.com/purescript-lua/purescript-lua-numbers | v9.1.1 |
+| numbers | https://github.com/purescript-lua/purescript-lua-numbers | v9.1.3 |
 | partial | https://github.com/purescript-lua/purescript-lua-partial | v4.1.0 |
-| prelude | https://github.com/purescript-lua/purescript-lua-prelude | v7.2.2 |
+| prelude | https://github.com/purescript-lua/purescript-lua-prelude | v7.3.0 |
 | refs | https://github.com/purescript-lua/purescript-lua-refs | v6.1.0 |
-| safe-coerce | https://github.com/purescript-lua/purescript-lua-safe-coerce | v2.0.0 |
-| st | https://github.com/purescript-lua/purescript-lua-st | v6.3.0 |
+| safe-coerce | https://github.com/purescript-lua/purescript-lua-safe-coerce | v2.0.1 |
+| st | https://github.com/purescript-lua/purescript-lua-st | v6.4.0 |
 | strings | https://github.com/purescript-lua/purescript-lua-strings | v6.2.0 |
 | unfoldable | https://github.com/purescript-lua/purescript-lua-unfoldable | v6.1.0 |
 | unsafe-coerce | https://github.com/purescript-lua/purescript-lua-unsafe-coerce | v6.1.0 |
