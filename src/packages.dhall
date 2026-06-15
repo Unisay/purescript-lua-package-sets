@@ -46,7 +46,7 @@
     , "unfoldable"
     ]
   , repo = "https://github.com/purescript-lua/purescript-lua-enums.git"
-  , version = "v6.1.0"
+  , version = "v6.1.1"
   }
 , exceptions =
   { dependencies = [ "effect", "either", "maybe", "prelude" ]
