@@ -76,7 +76,7 @@
 , numbers =
   { dependencies = [ "functions", "maybe", "prelude" ]
   , repo = "https://github.com/purescript-lua/purescript-lua-numbers.git"
-  , version = "v9.1.2"
+  , version = "v9.1.3"
   }
 , partial =
   { dependencies = [] : List Text
