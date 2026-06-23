@@ -5,35 +5,48 @@ the PureScript-to-Lua compiler backend. It collects the core PureScript
 libraries as Lua forks: each fork keeps the upstream PureScript sources and
 replaces the JavaScript FFI with Lua that runs on Lua 5.1.
 
-[`src/packages.dhall`](src/packages.dhall) holds only these Lua forks. It is the
-*overrides* half of a set, not a whole set: the release workflow copies it
-verbatim into each `psc-*` release asset. To build a project you merge it with
-the standard PureScript set and let the Lua forks win over their
-JavaScript-targeting upstreams.
+[`src/packages.dhall`](src/packages.dhall) is the source of truth: it lists only
+the Lua forks. Each `psc-*` release turns it into two assets — `packages.json`, a
+complete set you consume directly with the new spago, and the legacy
+`packages.dhall` overlay (see below).
 
 ## Using the set with spago
 
-In your project's `packages.dhall`, import both the upstream PureScript set and a
-released Lua set, then merge them so the Lua forks override the upstreams:
+With the new spago (`spago.yaml`), point `workspace.packageSet.url` at a released
+`packages.json`:
+
+```yaml
+workspace:
+  packageSet:
+    url: https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260623/packages.json
+```
+
+That set already carries the Lua forks in place of their JavaScript-targeting
+upstreams, so you just list what you need under `package.dependencies` — no
+`extraPackages` block and no merge. Releases are tagged
+`psc-0.15.15-<YYYYMMDD>[-N]`;
+[`latest-compatible-sets.json`](latest-compatible-sets.json) records the most
+recent one.
+
+### Legacy Dhall consumers (spago 0.21)
+
+The older `packages.dhall` overlay is still published. It is the *overrides* half
+of a set, not a whole set, so in your project's `packages.dhall` you merge it with
+the upstream PureScript set and let the Lua forks win:
 
 ```dhall
 let upstream-ps =
       https://github.com/purescript/package-sets/releases/download/psc-0.15.15-20240309/packages.dhall
 
 let upstream-lua =
-      https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260615/packages.dhall
+      https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260623/packages.dhall
 
 in  upstream-ps // upstream-lua
 ```
 
-The right operand wins, so every package that has a Lua fork comes from this set
-and everything else comes straight from the PureScript set. Pointing `upstream`
-at the Lua release on its own would give you only the forks, which is why the
-merge is required.
-
-Lua releases are tagged `psc-0.15.15-<YYYYMMDD>[-N]`;
-[`latest-compatible-sets.json`](latest-compatible-sets.json) records the most
-recent one, and `spago upgrade-set --tag <tag>` moves between them.
+The right operand wins, so every package with a Lua fork comes from this set and
+everything else from the PureScript set. Pointing at the Lua release alone would
+give you only the forks, which is why the merge is required.
 
 ## Packages
 

@@ -35,3 +35,4 @@ The practical, do-this summary of these decisions is in the repository root
 - [0005](0005-agents-md-single-source.md) — AGENTS.md is the single agent instruction file
 - [0006](0006-fork-release-by-annotated-tag.md) — Release forks with annotated tags
 - [0007](0007-formatting-treefmt-purs-tidy-lua-format.md) — Formatting via treefmt: purs-tidy and lua-format
+- [0008](0008-new-spago-and-json-package-set.md) — Publish a consumable JSON package set for the new spago

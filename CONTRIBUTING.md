@@ -8,10 +8,11 @@ rule lives in [`docs/adr/`](docs/adr/).
 
 ## Toolchain
 
-Pinned through purescript-overlay ([ADR 0001](docs/adr/0001-overlay-flake-toolchain.md)):
-purs 0.15.16, spago 0.21.0, Lua 5.1. Enter the dev shell with `nix develop`. Keep
-`flake.lock` reasonably current with `nix flake update`; a long-stale pslua pin
-breaks the build.
+Pinned through purescript-overlay ([ADR 0001](docs/adr/0001-overlay-flake-toolchain.md),
+[ADR 0008](docs/adr/0008-new-spago-and-json-package-set.md)): purs 0.15.16, spago
+1.x (the new PureScript spago — `spago.yaml`/`spago.lock`, not `spago.dhall`), Lua
+5.1. Enter the dev shell with `nix develop`. Keep `flake.lock` reasonably current
+with `nix flake update`; a long-stale pslua pin breaks the build.
 
 ## Commands
 
@@ -44,6 +45,12 @@ Annotated git tag on `master` → bump the fork's version in `src/packages.dhall
 regenerate the README package table (`scripts/gen-readme-table.sh`) →
 refresh `latest-compatible-sets.json` → push a `psc-*` set tag. A tooling-only PR
 needs no release.
+
+A `psc-*` tag publishes two release assets, both generated from
+`src/packages.dhall` ([ADR 0008](docs/adr/0008-new-spago-and-json-package-set.md)):
+`packages.json` — the consumable RemotePackageSet for the new spago
+(`workspace.packageSet.url`), built by `scripts/gen-package-set-json` — and the
+legacy `packages.dhall` overlay, kept for Dhall / spago 0.21 consumers.
 
 The README package table is generated from `src/packages.dhall` (the single
 source of truth) — run `scripts/gen-readme-table.sh` after any version bump and

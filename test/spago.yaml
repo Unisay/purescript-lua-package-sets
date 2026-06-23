@@ -1,0 +1,43 @@
+# Coherence check for the whole set. Depends on every Lua fork so `spago build`
+# compiles them together, surfacing version incompatibilities between the
+# pinned tags. Keep this list in sync with the keys of ../src/packages.dhall.
+#
+# The set under test is ../packages.json — the consumable RemotePackageSet that
+# scripts/gen-package-set-json builds from src/packages.dhall onto the registry
+# baseline. CI generates it before building, so this validates both the set and
+# the generator against the working tree, before any release is tagged. It
+# mirrors how pslua's own test/ps consumes the released set (packageSet.url),
+# but points at the working tree instead of a release.
+#
+# A no-op backend (`true`) makes spago compile with `--codegen corefn` rather
+# than JS: the forks ship Lua FFI, so JS codegen would fail to resolve it, and
+# corefn type-checks the sources together, which is all this check needs.
+package:
+  name: set-coherence-check
+  dependencies:
+    - arrays
+    - assert
+    - console
+    - control
+    - effect
+    - enums
+    - exceptions
+    - foldable-traversable
+    - functions
+    - integers
+    - lazy
+    - lua-ngx
+    - numbers
+    - partial
+    - prelude
+    - refs
+    - safe-coerce
+    - st
+    - strings
+    - unfoldable
+    - unsafe-coerce
+workspace:
+  backend:
+    cmd: "true"
+  packageSet:
+    path: ../packages.json
