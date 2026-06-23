@@ -11,8 +11,10 @@ rule lives in [`docs/adr/`](docs/adr/).
 Pinned through purescript-overlay ([ADR 0001](docs/adr/0001-overlay-flake-toolchain.md),
 [ADR 0008](docs/adr/0008-new-spago-and-json-package-set.md)): purs 0.15.16, spago
 1.x (the new PureScript spago — `spago.yaml`/`spago.lock`, not `spago.dhall`), Lua
-5.1. Enter the dev shell with `nix develop`. Keep `flake.lock` reasonably current
-with `nix flake update`; a long-stale pslua pin breaks the build.
+5.1. Each fork carries its own `flake.nix`: enter its dev shell with `nix develop`
+and keep `flake.lock` reasonably current with `nix flake update` (a long-stale
+pslua pin breaks the build). This set repository has no flake of its own; its CI
+builds through the pslua dev shell (`nix develop github:purescript-lua/purescript-lua`).
 
 ## Commands
 
