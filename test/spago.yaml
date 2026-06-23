@@ -1,9 +1,9 @@
 # Coherence check for the whole set. Depends on every Lua fork so `spago build`
 # compiles them together, surfacing version incompatibilities between the
-# pinned tags. Keep this list in sync with the keys of ../src/packages.dhall.
+# pinned tags. Keep this list in sync with the keys of ../src/packages.json.
 #
 # The set under test is ../packages.json — the consumable RemotePackageSet that
-# scripts/gen-package-set-json builds from src/packages.dhall onto the registry
+# scripts/gen-package-set-json builds from src/packages.json onto the registry
 # baseline. CI generates it before building, so this validates both the set and
 # the generator against the working tree, before any release is tagged. It
 # mirrors how pslua's own test/ps consumes the released set (packageSet.url),

@@ -13,7 +13,7 @@ tags with no GitHub Release attached.
 
 A fork release is an annotated git tag on `master`, pushed to the fork. No GitHub
 Release and no per-fork changelog entry. After tagging, bump the fork's `version`
-in this repository's `src/packages.dhall`, refresh `latest-compatible-sets.json`,
+in this repository's `src/packages.json`, refresh `latest-compatible-sets.json`,
 and push a `psc-0.15.15-<YYYYMMDD>[-N]` set tag, which the release workflow turns
 into the set asset. A pull request that touches only tooling, CI, or the flake
 (not `src/`) needs no tag or set bump, because spago consumes `src/` only.

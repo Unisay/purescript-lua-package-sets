@@ -13,10 +13,10 @@
 #
 #   scripts/gen-package-set-json        # write packages.json at the repo root
 #
-# src/packages.dhall stays the single source of truth for the forks; this
-# script only reshapes it and folds it onto the registry baseline. Self-
-# contained: it pulls dhall-to-json + jq + curl from nixpkgs, so it needs no
-# repo flake or dev shell (same pattern as scripts/gen-readme-table.sh).
+# src/packages.json is the single source of truth for the forks; this script
+# only reshapes it and folds it onto the registry baseline. Self-contained: it
+# pulls jq + curl from nixpkgs, so it needs no repo flake or dev shell (same
+# pattern as scripts/gen-readme-table.sh).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
@@ -28,21 +28,20 @@ cd "$(dirname "$0")/.."
 REGISTRY_SET="77.8.0"
 export REGISTRY_URL="https://raw.githubusercontent.com/purescript/registry/main/package-sets/${REGISTRY_SET}.json"
 
-nix shell nixpkgs#dhall-json nixpkgs#jq nixpkgs#curl --accept-flake-config -c bash -c '
+nix shell nixpkgs#jq nixpkgs#curl --accept-flake-config -c bash -c '
   set -euo pipefail
 
   # Pure-package baseline (RemotePackageSet: packages = name -> version string).
   baseline="$(curl -fsSL "$REGISTRY_URL")"
 
-  # Forks as git entries. src/packages.dhall is the legacy
-  # { repo, version, dependencies } shape; rename repo->git, version->ref so the
-  # forks resolve as git packages (clone at the tag) rather than registry
-  # versions. Carrying dependencies keeps the set self-sufficient even before a
-  # fork ships its own spago.yaml.
-  forks="$(dhall-to-json --file src/packages.dhall \
-    | jq "to_entries
+  # Forks as git entries. src/packages.json is the { repo, version,
+  # dependencies } overlay; rename repo->git, version->ref so the forks resolve
+  # as git packages (clone at the tag) rather than registry versions. Carrying
+  # dependencies keeps the set self-sufficient even before a fork ships its own
+  # spago.yaml.
+  forks="$(jq "to_entries
           | map({ key, value: { git: .value.repo, ref: .value.version, dependencies: .value.dependencies } })
-          | from_entries")"
+          | from_entries" src/packages.json)"
 
   # Fold the forks over the baseline; keep the baseline compiler + version (a
   # valid semver the registry stamped — our own release tag identifies the

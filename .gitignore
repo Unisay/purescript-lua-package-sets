@@ -1,7 +1,6 @@
-# Release artifacts assembled from src/packages.dhall at release time
+# Release artifact assembled from src/packages.json at release time
 # (scripts/gen-package-set-json / the release workflow). The single source of
-# truth is src/packages.dhall; these are generated, never committed.
-/packages.dhall
+# truth is src/packages.json; this is generated, never committed.
 /packages.json
 
 # Local-only working files (drafts, notes); never pushed.

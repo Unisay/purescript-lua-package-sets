@@ -16,25 +16,20 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # The generator pulls dhall-json + jq + curl from nixpkgs.
+      # The generator pulls jq + curl from nixpkgs.
       - uses: cachix/install-nix-action@v31
-
-      # Legacy asset: the forks-only overlay for Dhall / spago 0.21 consumers
-      # (the `upstream-ps // upstream-lua` merge).
-      - name: Assemble packages.dhall
-        run: cp ./src/packages.dhall packages.dhall
 
       # Consumable asset: a full RemotePackageSet (registry baseline + Lua fork
       # git overrides) for the new spago via `workspace.packageSet.url`.
       - name: Generate packages.json
         run: ./scripts/gen-package-set-json
 
-      - name: Create release with both assets
+      - name: Create release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
             --repo "$GITHUB_REPOSITORY" \
             --title "$GITHUB_REF_NAME" \
-            --notes "PureScript Lua package set \`$GITHUB_REF_NAME\`. \`packages.json\` is the consumable set for the new spago (\`workspace.packageSet.url\`); \`packages.dhall\` is the legacy overlay for the Dhall \`//\` merge." \
-            ./packages.dhall ./packages.json
+            --notes "PureScript Lua package set \`$GITHUB_REF_NAME\` for the new spago: point \`workspace.packageSet.url\` at this release's \`packages.json\`." \
+            ./packages.json
