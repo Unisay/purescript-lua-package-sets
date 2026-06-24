@@ -1,0 +1,7 @@
+# Release artifact assembled from src/packages.json at release time
+# (scripts/gen-package-set-json / the release workflow). The single source of
+# truth is src/packages.json; this is generated, never committed.
+/packages.json
+
+# Local-only working files (drafts, notes); never pushed.
+/.local/

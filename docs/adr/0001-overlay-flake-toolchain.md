@@ -1,6 +1,6 @@
 # 0001 — Pin the toolchain with purescript-overlay
 
-Status: Accepted
+Status: Accepted (spago pin superseded by [0008](0008-new-spago-and-json-package-set.md): spago 0.21.0 → 1.x; the purs 0.15.16 and Lua 5.1 pins stand)
 
 ## Context
 

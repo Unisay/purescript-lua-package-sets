@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Generate packages.json — a consumable package set for the new Spago.
+#
+# The new Spago (>= 0.93) consumes a custom set through
+# `workspace.packageSet.url` (or `packageSet.path`) and parses it as a
+# RemotePackageSet: { compiler, version, packages }, where each package is
+# either a registry version string, a git entry, or a legacy git entry. We
+# publish exactly that: the upstream PureScript registry package set as the
+# pure-package baseline, with THIS repo's Lua forks overlaid as git entries.
+# A consumer points `packageSet.url` at the released file and gets the Lua
+# forks in place of their JavaScript-targeting upstreams — no `extraPackages`
+# block and no Dhall `//` merge.
+#
+#   scripts/gen-package-set-json        # write packages.json at the repo root
+#
+# src/packages.json is the single source of truth for the forks; this script
+# only reshapes it and folds it onto the registry baseline. Self-contained: it
+# pulls jq + curl from nixpkgs, so it needs no repo flake or dev shell (same
+# pattern as scripts/gen-readme-table.sh).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+# Registry package set used as the pure-package baseline. The 77.x sets are
+# built with compiler 0.15.15; pslua runs purs 0.15.16 (a proven-compatible
+# pairing — the same baseline pslua's own test/ps resolves against). No
+# registry set is built for 0.15.16, so this is the latest usable one. The set
+# files in the registry are append-only, so pinning by version is stable.
+REGISTRY_SET="77.8.0"
+export REGISTRY_URL="https://raw.githubusercontent.com/purescript/registry/main/package-sets/${REGISTRY_SET}.json"
+
+nix shell nixpkgs#jq nixpkgs#curl --accept-flake-config -c bash -c '
+  set -euo pipefail
+
+  # Pure-package baseline (RemotePackageSet: packages = name -> version string).
+  baseline="$(curl -fsSL "$REGISTRY_URL")"
+
+  # Forks as git entries. src/packages.json is the { repo, version,
+  # dependencies } overlay; rename repo->git, version->ref so the forks resolve
+  # as git packages (clone at the tag) rather than registry versions. Carrying
+  # dependencies keeps the set self-sufficient even before a fork ships its own
+  # spago.yaml.
+  forks="$(jq "to_entries
+          | map({ key, value: { git: .value.repo, ref: .value.version, dependencies: .value.dependencies } })
+          | from_entries" src/packages.json)"
+
+  # Fold the forks over the baseline; keep the baseline compiler + version (a
+  # valid semver the registry stamped — our own release tag identifies the
+  # revision via the GitHub release the asset hangs on).
+  jq -n --argjson b "$baseline" --argjson f "$forks" \
+    "{ compiler: \$b.compiler, version: \$b.version, packages: (\$b.packages + \$f) }" \
+    > packages.json
+
+  echo "Wrote packages.json: registry $(jq -r .version <<<"$baseline") baseline ($(jq ".packages | length" <<<"$baseline") packages) + $(jq "length" <<<"$forks") Lua forks = $(jq ".packages | length" packages.json) total."
+'

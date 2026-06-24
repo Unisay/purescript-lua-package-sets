@@ -2,3 +2,4 @@
 /output/
 /.psci_modules/
 /dist/
+/spago.lock

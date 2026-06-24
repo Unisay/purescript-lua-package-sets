@@ -1,10 +1,11 @@
 name: Test set
 
-# Coherence check for the whole set. Builds a project that depends on every
-# package (test/spago.dhall) against `upstream-ps // ./src/packages.dhall`,
-# using a SINGLE current toolchain (purs + spago from the pslua compiler's
-# dev shell). A red run means the pinned package versions do not compile
-# together.
+# Coherence check for the whole set. Generates the consumable package set
+# (packages.json) with scripts/gen-package-set-json, then builds a project that
+# depends on every Lua fork (test/spago.yaml) against it, using a SINGLE current
+# toolchain (purs + spago from the pslua compiler's dev shell). A red run means
+# the pinned package versions do not compile together — or the generator
+# produced a set spago cannot consume.
 #
 # This deliberately does NOT enter each package's own flake: that rebuilt the
 # compiler revision frozen in every tag's flake.lock (cache-miss roulette on
@@ -32,31 +33,34 @@ jobs:
       - name: Free up disk space
         uses: wimpysworld/nothing-but-nix@687c797a730352432950c707ab493fcc951818d7
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: cachix/install-nix-action@v27
+      - uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
             extra-substituters = https://cache.iog.io https://purescript-lua.cachix.org
             extra-trusted-public-keys = hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ= purescript-lua.cachix.org-1:yLs4ei2HtnuPtzLekOrW3xdfm95+Etw15gwgyIGTayA=
 
-      - uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@v17
         with:
           name: purescript-lua
+
+      - name: Generate the consumable package set (packages.json)
+        run: ./scripts/gen-package-set-json
 
       - name: Build the whole set with one toolchain
         run: |
           nix develop github:purescript-lua/purescript-lua --accept-flake-config \
-            -c bash -c 'cd test && spago build -u "-g corefn"'
+            -c bash -c 'cd test && spago build'
 
-  # The README package table is generated from src/packages.dhall; guard against
+  # The README package table is generated from src/packages.json; guard against
   # hand-edits / forgotten regeneration so it cannot drift out of sync again.
   readme-table:
     runs-on: ubuntu-latest
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
-      - uses: cachix/install-nix-action@v27
-      - name: README package table is in sync with src/packages.dhall
+      - uses: actions/checkout@v5
+      - uses: cachix/install-nix-action@v31
+      - name: README package table is in sync with src/packages.json
         run: ./scripts/gen-readme-table.sh --check

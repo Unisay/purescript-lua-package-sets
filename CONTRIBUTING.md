@@ -8,10 +8,13 @@ rule lives in [`docs/adr/`](docs/adr/).
 
 ## Toolchain
 
-Pinned through purescript-overlay ([ADR 0001](docs/adr/0001-overlay-flake-toolchain.md)):
-purs 0.15.16, spago 0.21.0, Lua 5.1. Enter the dev shell with `nix develop`. Keep
-`flake.lock` reasonably current with `nix flake update`; a long-stale pslua pin
-breaks the build.
+Pinned through purescript-overlay ([ADR 0001](docs/adr/0001-overlay-flake-toolchain.md),
+[ADR 0008](docs/adr/0008-new-spago-and-json-package-set.md)): purs 0.15.16, spago
+1.x (the new PureScript spago — `spago.yaml`/`spago.lock`, not `spago.dhall`), Lua
+5.1. Each fork carries its own `flake.nix`: enter its dev shell with `nix develop`
+and keep `flake.lock` reasonably current with `nix flake update` (a long-stale
+pslua pin breaks the build). This set repository has no flake of its own; its CI
+builds through the pslua dev shell (`nix develop github:purescript-lua/purescript-lua`).
 
 ## Commands
 
@@ -40,13 +43,19 @@ imports it with `@AGENTS.md`. Edit `AGENTS.md`; never duplicate.
 
 ## Releasing ([ADR 0006](docs/adr/0006-fork-release-by-annotated-tag.md))
 
-Annotated git tag on `master` → bump the fork's version in `src/packages.dhall` →
+Annotated git tag on `master` → bump the fork's version in `src/packages.json` →
 regenerate the README package table (`scripts/gen-readme-table.sh`) →
 refresh `latest-compatible-sets.json` → push a `psc-*` set tag. A tooling-only PR
 needs no release.
 
-The README package table is generated from `src/packages.dhall` (the single
-source of truth) — run `scripts/gen-readme-table.sh` after any version bump and
+A `psc-*` tag publishes one release asset
+([ADR 0008](docs/adr/0008-new-spago-and-json-package-set.md)): `packages.json`,
+the consumable RemotePackageSet for the new spago (`workspace.packageSet.url`),
+built from `src/packages.json` by `scripts/gen-package-set-json`. spago 0.21 /
+Dhall is no longer supported.
+
+The README package table is generated from `src/packages.json` (the single
+source of truth): run `scripts/gen-readme-table.sh` after any version bump and
 commit the result. CI (`scripts/gen-readme-table.sh --check`) fails if it drifts.
 
 ## Decisions and ADRs

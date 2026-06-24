@@ -14,29 +14,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
 
-      - name: Copy packages.dhall to the root
-        run: cp ./src/packages.dhall packages.dhall
+      - uses: cachix/install-nix-action@v31
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      # Consumable asset: a full RemotePackageSet (registry baseline + Lua fork
+      # git overrides) for the new spago via `workspace.packageSet.url`.
+      - name: Generate packages.json
+        run: ./scripts/gen-package-set-json
+
+      - name: Create release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          draft: false
-          prerelease: false
-
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./packages.dhall
-          asset_name: packages.dhall
-          asset_content_type: application/x-dhall
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "$GITHUB_REF_NAME" \
+            --notes "PureScript Lua package set \`$GITHUB_REF_NAME\` for the new spago: point \`workspace.packageSet.url\` at this release's \`packages.json\`." \
+            ./packages.json
