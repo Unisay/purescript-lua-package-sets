@@ -17,7 +17,7 @@ Point `workspace.packageSet.url` at a released `packages.json`:
 ```yaml
 workspace:
   packageSet:
-    url: https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260623/packages.json
+    url: https://github.com/purescript-lua/purescript-lua-package-sets/releases/download/psc-0.15.15-20260624/packages.json
 ```
 
 That set already carries the Lua forks in place of their JavaScript-targeting
