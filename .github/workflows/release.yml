@@ -16,7 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      # The generator pulls jq + curl from nixpkgs.
       - uses: cachix/install-nix-action@v31
 
       # Consumable asset: a full RemotePackageSet (registry baseline + Lua fork
