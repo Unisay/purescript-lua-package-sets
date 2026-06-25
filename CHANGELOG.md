@@ -1,0 +1,106 @@
+# Changelog
+
+Notable changes to the purescript-lua package set are recorded here. Each entry
+is a `psc-*` set release: the combination of fork versions consumers pin through
+`workspace.packageSet.url`. The format is based on
+[Keep a Changelog][keepachangelog], and entries are assembled from fragments in
+`changelog.d/` with [scriv][scriv] on each release ([ADR 0009][adr0009]).
+
+`scriv` for this repository comes from the pslua dev shell
+(`nix develop github:purescript-lua/purescript-lua`), since the set has no flake
+of its own.
+
+<!-- scriv-insert-here -->
+
+## psc-0.15.15-20260624 - 2026-06-24
+
+### Changed
+
+- The set is published as a single consumable `packages.json` for the new spago:
+  a RemotePackageSet (registry baseline with the Lua forks overlaid as git
+  entries) that consumers point `workspace.packageSet.url` at. `src/packages.json`
+  is now the source of truth ([ADR 0008][adr0008]).
+
+### Removed
+
+- The legacy `packages.dhall` release asset and the Dhall `upstream // lua` merge
+  model. spago 0.21 / Dhall is no longer supported.
+
+## psc-0.15.15-20260615-2 - 2026-06-15
+
+### Fixed
+
+- enums v6.1.2: `toCharCode` is length-guarded so a lone code-unit byte no longer
+  crashes (#102).
+
+## psc-0.15.15-20260615 - 2026-06-15
+
+### Fixed
+
+- The bulk of the FFI campaign landed here: console v6.1.1 (`error`/`warn` to
+  stderr, #76 #77), numbers v9.1.2 and v9.1.3 (the `Number` formatting contract,
+  #92–#98), integers v6.1.2 (32-bit `Int` semantics, #85–#91), enums v6.1.1
+  (UTF-8 `Char` code points, #79 #80), effect v4.1.3 (`forE` half-open range,
+  #78), exceptions v6.1.1 (Lua 5.1 `Effect.Exception`, #81–#84), arrays v7.4.0 and
+  v7.4.1 (5.1-safe `table.pack`/`unpack`/`move`), st v6.4.0 (`ST.for` half-open
+  range), prelude v7.3.0, and safe-coerce v2.0.1.
+
+## psc-0.15.15-20260614-4 - 2026-06-14
+
+### Fixed
+
+- effect v4.1.2 and assert v6.1.1: luacheck-clean FFI.
+
+## psc-0.15.15-20260614-3 - 2026-06-14
+
+### Fixed
+
+- control v6.0.1 (`arrayExtend` for Lua 5.1) and foldable-traversable v6.1.1
+  (1-based `mapWithIndex`).
+
+## psc-0.15.15-20260614-2 - 2026-06-14
+
+### Fixed
+
+- effect v4.1.1, integers v6.1.1, and numbers v9.1.1: the first batch of FFI
+  bugfixes.
+
+## psc-0.15.15-20260614 - 2026-06-14
+
+### Fixed
+
+- prelude v7.2.2: `Array` `Semigroup` append (`concatArray`).
+
+## psc-0.15.15-20260613-2 - 2026-06-13
+
+### Added
+
+- strings v6.2.0: `Data.String.CodePoints` implemented for UTF-8.
+
+## psc-0.15.15-20260613 - 2026-06-13
+
+### Fixed
+
+- prelude v7.2.1: Lua 5.1 FFI compatibility.
+
+## psc-0.15.15-20260612 - 2026-06-12
+
+### Fixed
+
+- prelude v7.2.0 restored, bringing back `unit = {}` so `Array Unit` no longer
+  collapses to an empty table ([ADR 0004][adr0004]).
+
+## Earlier
+
+Set releases before the 2026 FFI campaign (the `psc-0.15.8-*` and
+`psc-0.15.15-2024*` series, 2023–2024) tracked upstream package-set updates and
+the initial Lua forks. They predate this changelog and are recorded only as
+`psc-*` tags.
+
+<!-- scriv-end-here -->
+
+[keepachangelog]: https://keepachangelog.com/en/1.1.0/
+[scriv]: https://scriv.readthedocs.io/
+[adr0004]: docs/adr/0004-unit-is-empty-table.md
+[adr0008]: docs/adr/0008-new-spago-and-json-package-set.md
+[adr0009]: docs/adr/0009-changelogs-via-scriv.md

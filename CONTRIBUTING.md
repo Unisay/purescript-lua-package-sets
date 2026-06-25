@@ -41,12 +41,29 @@ All forks share one workflow: substituters pinned in `extra_nix_config` (no
 Each fork has an `AGENTS.md` (the single source) and a one-line `CLAUDE.md` that
 imports it with `@AGENTS.md`. Edit `AGENTS.md`; never duplicate.
 
-## Releasing ([ADR 0006](docs/adr/0006-fork-release-by-annotated-tag.md))
+## Changelogs ([ADR 0009](docs/adr/0009-changelogs-via-scriv.md))
 
-Annotated git tag on `master` → bump the fork's version in `src/packages.json` →
-regenerate the README package table (`scripts/gen-readme-table.sh`) →
-refresh `latest-compatible-sets.json` → push a `psc-*` set tag. A tooling-only PR
-needs no release.
+Every repository keeps a `CHANGELOG.md` managed with
+[scriv](https://scriv.readthedocs.io/): fragments in `changelog.d/`, assembled
+into a dated section by `scriv collect` on release. Forks provide `scriv` in
+their `flake.nix` dev shell; this set repository has no flake, so its `scriv`
+comes from the pslua dev shell (`nix develop github:purescript-lua/purescript-lua`).
+
+- A change that touches `src/` adds a fragment: `scriv create` writes a template
+  under `changelog.d/`; fill in the right category (Added/Changed/Fixed/Removed)
+  and commit it with the change. A tooling-, CI-, or flake-only change ships no
+  release, so it needs no fragment.
+- A fork's scriv section documents the Lua fork's own release line; the inherited
+  upstream changelog stays below it as history.
+
+## Releasing ([ADR 0006](docs/adr/0006-fork-release-by-annotated-tag.md), [ADR 0009](docs/adr/0009-changelogs-via-scriv.md))
+
+Run `scriv collect --version <tag>` to fold the pending fragments into
+`CHANGELOG.md`, then commit it with the version bump. After that: annotated git
+tag on `master` → bump the fork's version in `src/packages.json` → regenerate the
+README package table (`scripts/gen-readme-table.sh`) → refresh
+`latest-compatible-sets.json` → push a `psc-*` set tag. A tooling-only PR needs no
+release.
 
 A `psc-*` tag publishes one release asset
 ([ADR 0008](docs/adr/0008-new-spago-and-json-package-set.md)): `packages.json`,
