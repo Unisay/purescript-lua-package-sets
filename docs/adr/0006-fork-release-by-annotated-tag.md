@@ -1,6 +1,6 @@
 # 0006 — Release forks with annotated tags
 
-Status: Accepted
+Status: Accepted (the no-changelog clause is superseded by [0009](0009-changelogs-via-scriv.md))
 
 ## Context
 
